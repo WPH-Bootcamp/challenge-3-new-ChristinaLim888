@@ -1,1 +1,103 @@
-@import 'tailwindcss';
+@import "tailwindcss";
+
+/*
+@theme untuk warna
+@layer base untuk global
+@apply untuk komponen
+*/
+
+@layer base {
+  body {
+    font-family: "Poppins", sans-serif;
+    background: red;
+    @apply bg-white text-black; /* light mode default */
+  }
+}
+
+/* ======================
+   COLOR SYSTEM
+====================== */
+@theme {
+  /* NEUTRAL */
+  --color-neutral-25: #fdfdfd;
+  --color-neutral-50: #fafafa;
+  --color-neutral-100: #f5f5f5;
+  --color-neutral-200: #e9eaeb;
+  --color-neutral-300: #d5d7da;
+  --color-neutral-400: #a4a7ae;
+  --color-neutral-500: #717680;
+  --color-neutral-600: #535862;
+  --color-neutral-700: #414651;
+  --color-neutral-800: #252b37;
+  --color-neutral-900: #181d27;
+  --color-neutral-950: #0a0d12;
+
+  /* PRIMARY */
+  --color-primary-100: #fee0d8;
+  --color-primary-200: #ff623e;
+  --color-primary-300: #cc4e32;
+  --color-primary-400: #80311f;
+
+  /* BASE */
+  --color-base-white: #ffffff;
+  --color-base-black: #000000;
+}
+
+/* ====================== Navbar ====================== */
+@layer components {
+  .main-padding {
+    @apply mx-20 my-8;
+  }
+  .text {
+    @apply font-semibold text-xl;
+  }
+  .nav-header {
+    @apply flex items-center justify-between px-4 md:px-30 py-3 md:py-4 border-2 border-red-500;
+  }
+
+  .nav-logo {
+    @apply flex items-center gap-2;
+  }
+
+  /* Kenapa mobile styling nya tidak berfungsi??  */
+  .nav-logo img {
+    @apply md:w-8 md:h-8 md:gap-2 w-6 h-6 gap-1;
+  }
+
+  .nav-logo p {
+    @apply md:text-xl text-md font-bold;
+  }
+
+  .menu {
+    @apply fixed top-0 left-0 w-full h-full bg-white flex flex-col items-center justify-center gap-6
+         translate-x-full transition duration-300 md:static md:flex-row md:translate-x-0 md:h-auto md:w-auto;
+  }
+
+  .menu a {
+    @apply text-neutral-600 hover:text-primary-200 transition font-semibold;
+  }
+
+  .tombol {
+    @apply px-14 py-2 rounded-full bg-primary-200 text-white font-semibold md:inline-block;
+  }
+.menu-open #menu-btn {
+  @apply hidden;
+}
+
+.menu-open #close-btn {
+  @apply block;
+}
+  .desktop-menu {
+    @apply hidden md:flex;
+  }
+  .menu-btn {
+    @apply md:hidden text-xl;
+  }
+
+  #close-btn {
+    @apply hidden md:hidden text-xl;
+  }
+  .menu.active {
+  @apply translate-x-0 flex-col gap-4 ;
+}
+}

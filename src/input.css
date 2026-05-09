@@ -48,7 +48,7 @@
 @layer components {
   /* ========== Umum ========== */
   .main-padding {
-    @apply lg:px-30 lg:py-20 md:px-20 md:py-18 px-5 py-10;
+    @apply lg:px-30 lg:py-20 lg:px-20 lg:py-18 px-5 py-10;
   }
   .title {
     @apply flex justify-center text-center lg:text-4xl text-2xl font-semibold leading-10 tracking-[0.03em];
@@ -58,6 +58,9 @@
   }
   .el-margin {
     @apply lg:mt-14 md:mt-8 mt-4;
+  }
+  .part {
+    @apply px-0 mx-0 py-20 overflow-hidden;
   }
   .f {
     @apply border-2 border-blue-400;
@@ -71,10 +74,11 @@
   /* ================= NAVBAR ================= */
 
   .nav-header {
-    @apply flex items-center justify-between px-5 md:px-12 lg:px-24 py-4 lg:py-5 relative z-50;
+    @apply flex items-center justify-between py-4 
+    lg:py-5 relative z-50 lg:px-20 px-5;
   }
 
-  /* ================= LOGO ================= */
+  /* -------------------- LOGO -------------------- */
 
   .nav-logo {
     @apply flex items-center gap-3;
@@ -88,73 +92,118 @@
     @apply text-lg lg:text-xl font-bold text-[#111111] tracking-[0.01em];
   }
 
-  /* ================= RIGHT NAV ================= */
+  /* -------------------- RIGHT NAV -------------------- */
 
   .container-atas {
     @apply flex items-center gap-4 lg:gap-6;
   }
+  .container-bwh {
+    @apply relative flex flex-col lg:flex-row
+         items-center
+         min-h-[calc(100vh-90px)]
+         px-5 md:px-20 lg:px-30
+         pb-20 pt-10 lg:pt-0;
+  }
 
-  /* ================= MENU ================= */
+  /* -------------------- MENU -------------------- */
 
   .menu {
-    @apply hidden md:flex items-center gap-6 lg:gap-10;
+    @apply hidden lg:flex items-center gap-6 lg:gap-10 w-full ;
   }
 
   .menu a {
-    @apply text-[#1b1b1b] text-sm font-medium tracking-[0.02em] transition-all duration-300 hover:text-[#ff6b3d];
+    @apply text-[#1b1b1b] text-sm font-medium tracking-[0.02em] 
+    transition-all duration-300 hover:text-[#ff6b3d] font-semibold
+    items-center;
+  }
+  /* ================= MODE BUTTON ================= */
+
+  .mode {
+    @apply fixed bottom-5 right-5 z-50;
   }
 
-  /* ================= BUTTON ================= */
+  .mode button {
+    @apply w-14 h-14
+         rounded-full
+         bg-black text-white
+         text-2xl
+         flex items-center justify-center
+         shadow-lg
+         transition duration-300;
+  }
+
+  /* DARK MODE */
+
+  .dark .mode button {
+    @apply bg-white text-black;
+  }
+
+  /* DARK MODE */
+
+  .dark .mode button {
+    @apply bg-white text-black;
+  }
+  /* -------------------- BUTTON -------------------- */
 
   .tombol {
-    @apply hidden md:flex items-center justify-center bg-[#ff6b3d] text-white font-semibold text-sm px-8 lg:px-12 py-3 rounded-full transition-all duration-300 shadow-[0_10px_30px_rgba(255,107,61,0.25)] hover:scale-105 hover:bg-[#ff5a28];
+    @apply w-full lg:w-[200px] hidden md:flex items-center justify-center bg-[#ff6b3d] text-white font-semibold text-sm px-8 lg:px-12 py-3 rounded-full transition-all duration-300 shadow-[0_10px_30px_rgba(255,107,61,0.25)] hover:scale-105 hover:bg-[#ff5a28];
   }
 
-  /* ================= MOBILE BUTTON ================= */
+  /* -------------------- MOBILE BUTTON -------------------- */
 
   .menu-btn,
   .close-btn {
-    @apply flex md:hidden text-2xl text-[#111111];
+    @apply flex lg:hidden
+         text-3xl
+         text-[#111111]
+         relative z-100;
   }
 
   .close-btn {
-    @apply hidden;
+    @apply none;
   }
 
-  .menu-open #menu-btn {
-    @apply hidden;
+  /* ketika menu open */
+
+  .menu-open .menu-btn {
+    @apply none;
   }
 
-  .menu-open #close-btn {
+  .menu-open .close-btn {
     @apply flex;
   }
-
-  /* ================= MOBILE MENU ================= */
+  /* -------------------- MOBILE MENU -------------------- */
 
   .mobile-links {
-    @apply fixed top-0 right-[-100%] w-[260px] h-screen bg-white flex-col justify-center items-center gap-8 shadow-[-10px_0_40px_rgba(0,0,0,0.08)] transition-all duration-500 z-40;
+    @apply fixed top-0 right-[-100%] w-[280px] h-screen bg-white flex flex-col justify-center items-center gap-8 shadow-[-10px_0_40px_rgba(0,0,0,0.08)] transition-all duration-500 z-90 lg:hidden;
   }
 
+  .mobile-links.active {
+    @apply right-0;
+  }
   .menu.active {
     @apply right-0 flex;
   }
 
-  /* ================= HERO ================= */
-
+  /* ===================== TULISAN DAN GAMBAR ===================== */
   .header-content {
     @apply flex flex-col-reverse lg:flex-row items-center justify-between px-5 md:px-12 lg:px-24 pt-5 lg:pt-16 gap-10;
   }
 
-  /* ================= LEFT ================= */
-  .container-bwh {
-    @apply lg:px-30 px-16;
-  }
+  /* -------------------- LEFT -------------------- */
+
   .kiri {
-    @apply w-full lg:w-1/2 flex flex-col items-start;
+    @apply w-full
+         lg:w-[650px]
+         flex flex-col
+         items-start
+         relative z-20
+         lg:pt-24;
   }
 
   .kiri h1 {
-    @apply text-4xl md:text-5xl lg:text-7xl font-bold leading-tight tracking-[-0.03em] text-[#111111] max-w-[620px];
+    @apply text-4xl lg:text-5xl font-bold leading-tight 
+    tracking-[-0.01em] text-[#111111] justify-center lg:pr-10;
   }
 
   .kiri span {
@@ -162,21 +211,27 @@
   }
 
   .kiri-p {
-    @apply mt-6 text-base md:text-lg lg:text-2xl leading-7 md:leading-8 lg:leading-10 text-neutral-600 max-w-[620px];
+    @apply mt-6 text-lg lg:text-xl leading-7 md:leading-8 lg:leading-10 text-[#0a0d12] max-w-[680px];
   }
 
   .kiri .tombol {
     @apply mt-10 flex;
   }
 
-  /* ================= RIGHT ================= */
+  /* -------------------- RIGHT -------------------- */
 
   .kanan {
-    @apply w-full lg:w-1/2 flex justify-center lg:justify-end relative;
+    @apply lg:absolute top-0 right-0 w-full h-full lg:w-[60%] flex justify-center items-start;
   }
 
   .kanan img {
-    @apply w-full max-w-[500px] lg:max-w-[780px] object-contain drop-shadow-[0_40px_60px_rgba(0,0,0,0.12)];
+    @apply object-contain
+         w-[380px]
+         md:w-[550px]
+         lg:w-[950px]
+         xl:w-[1100px]
+         h-auto
+         max-w-none;
   }
 
   /* =============== Leading =============== */
@@ -283,7 +338,8 @@
   /* --------------------- NUMBER --------------------- */
 
   .number {
-    @apply absolute flex flex-col items-center gap-[80px] z-10 right-1/2 translate-x-[26px] lg:mt-10;
+    @apply absolute flex flex-col lg:items-center gap-[80px] z-10 
+    right-1/2 translate-x-[26px] lg:mt-10 items-start;
   }
 
   .number p {
@@ -306,16 +362,13 @@
          shadow-sm transition duration-300
          w-full lg:max-w-[540px];
   }
-
   .isi:hover {
     @apply -translate-y-1 shadow-lg;
   }
-
   /* zig-zag desktop */
   .isi:nth-child(odd) {
     @apply lg:mr-auto;
   }
-
   .isi:nth-child(even) {
     @apply lg:ml-auto;
   }
@@ -324,40 +377,35 @@
   .add-icon {
     @apply flex items-start justify-between gap-5;
   }
-
   .add-icon h3 {
     @apply lg:text-xl text-sm font-semibold text-neutral-950;
   }
-
   .add-icon img {
     @apply w-5 h-5 object-contain mt-1;
   }
 
   /* -------------------- TEXT -------------------- */
-
   .isi p {
     @apply mt-2 text-neutral-500 text-[16px] leading-8;
   }
+
   /* =============== Smart IT Solutions =============== */
   .jobs {
     @apply grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 lg:mt-8;
   }
-
   .job {
     @apply relative bg-gray-100 border border-gray-200 rounded-3xl px-5 pt-16 pb-6 transition duration-300 lg:mt-8;
   }
-
   .job img {
     @apply absolute -top-8 left-6 w-20 h-20 object-contain;
   }
-
   .job h3 {
     @apply text-2xl leading-tight font-bold text-black mb-3 tracking-tight;
   }
-
   .job p {
     @apply lg:text-[16px] leading-relaxed text-gray-500 font-medium;
   }
+
   /* =============== Built Industry =============== */
   .isi-cont {
     @apply flex flex-col lg:flex-row gap-10 items-start lg:mt-14;
@@ -365,20 +413,17 @@
   .industry .title {
     @apply justify-start text-left;
   }
-
   .industry .subtitle {
     @apply justify-start text-left;
   }
-  /* ------------------ LEFT ------------------ */
 
+  /* ------------------ LEFT ------------------ */
   .kiri-i {
     @apply flex flex-col gap-8 lg:w-[22%] w-full;
   }
-
   .kiri-i div {
     @apply flex items-center gap-4;
   }
-
   .kosong {
     @apply w-[5px] h-10 bg-[#aaaaaa] rounded-full;
   }
@@ -391,145 +436,146 @@
   .fin {
     @apply lg:text-xl font-bold text-neutral-950 tracking-tight;
   }
-  
+
   /* hover */
-.fin:hover {
-  @apply text-primary-200;
-}
+  .fin:hover {
+    @apply text-primary-200;
+  }
+  .gray:hover {
+    @apply text-neutral-950;
+  }
 
-.gray:hover {
-  @apply text-neutral-950;
-}
   /* ------------------ RIGHT ------------------ */
-
   .kanan-i {
     @apply flex flex-col gap-8 lg:w-[78%] w-full;
   }
-
   .kanan-i p {
     @apply text-neutral-900 text-lg leading-9 text-base max-w-5xl;
   }
-
   .kanan-i img {
     @apply w-full rounded-[30px] object-cover;
   }
+
   /* =============== Project =============== */
   .portofolios {
     @apply grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 lg:mt-13;
   }
-
   .porto {
     @apply flex flex-col;
   }
-
   .porto img {
     @apply w-full rounded-[28px] object-cover transition duration-300;
   }
-
   .porto img:hover {
     @apply scale-[1.02];
   }
-
   .porto p {
     @apply text-primary-200 lg:text-[16px] font-medium mt-5 mb-2;
   }
-
   .porto h3 {
     @apply lg:text-2xl font-bold text-neutral-950 tracking-tight;
   }
-  /* =============== Partners =============== */
+  /* ================= Partners ================= */
   .part {
-    @apply lg:px-0 lg:mx-0;
+    @apply px-0 mx-0;
   }
   .partners {
-  @apply relative flex items-center justify-center gap-8 lg:mt-30;
-}
+    @apply relative flex items-center justify-center gap-8 lg:mt-30;
+  }
 
-/* ================= CARD ================= */
-
-.partner {
-  @apply relative bg-white border border-gray-200
+  /* ------------------ CARD ------------------ */
+  .partner {
+    @apply relative bg-[#dedcdc] border-2 
+        bg-gradient-to-br
+         from-[#ff6c37]
+         via-[#dedcdc]
+         to-[#dedcdc]
          rounded-[32px]
-         w-full max-w-[420px]
-         min-h-[420px]
-         px-10 py-5
+         w-full max-w-[420px] h-[350px]
+         px-10 py-5 w-[200px] h-[50px]
          flex flex-col items-center text-center
          transition-all duration-500;
-}
+  }
 
-/* ================= IMG KOMA ================= */
+  /* -------------------- IMG KOMA -------------------- */
+  .koma {
+    @apply absolute -top-8 left-[10px] lg:ml-10
+         w-16 h-16 object-contain;
+  }
 
-.partner .quote {
-  @apply absolute -top-7 left-[10px]
-         w-14 h-14 object-contain;
-}
+  /* -------------------- STARS -------------------- */
+  .partner .stars {
+    @apply flex items-center justify-center gap-1 mt-3;
+  }
+  .partner .stars img {
+    @apply w-7 h-7 lg:mb-4;
+  }
 
-/* ================= STARS ================= */
+  /* -------------------- TEXT -------------------- */
+  .partner .desc {
+    @apply mt-6 text-lg leading-8 text-neutral-700;
+  }
+  .partner .name {
+    @apply mt-8 text-2xl font-semibold text-black;
+  }
+  .partner .position {
+    @apply mt-2 text-lg text-primary-200 font-medium;
+  }
 
-.partner .stars {
-  @apply flex items-center justify-center gap-1 mt-3;
-}
-
-.partner .stars img {
-  @apply w-5 h-5 object-contain;
-}
-
-/* ================= TEXT ================= */
-
-.partner .desc {
-  @apply mt-6 text-lg leading-8 text-neutral-700;
-}
-
-.partner .name {
-  @apply mt-8 text-2xl font-semibold text-black;
-}
-
-.partner .position {
-  @apply mt-2 text-lg text-primary-200 font-medium;
-}
-
-/* ================= AVATAR ================= */
-
-.partner .ellipse {
-  @apply absolute -bottom-10 left-1/2
+  /* -------------------- AVATAR -------------------- */
+  .partner .ellipse {
+    @apply absolute -bottom-10 left-1/2
          -translate-x-1/2
-         w-20 h-20 rounded-full
+         w-24 h-24 rounded-full
          object-cover border-4 border-white;
-}
+  }
 
-/* ================= DOT ================= */
+  /* -------------------- DOT -------------------- */
+  .dot {
+    @apply flex justify-center gap-3 mt-20;
+  }
 
-.dot {
-  @apply flex justify-center gap-3 mt-16;
-}
+  .dot span {
+    @apply w-3 h-3 rounded-full bg-gray-400;
+  }
 
-.dot span {
-  @apply w-3 h-3 rounded-full bg-gray-400;
-}
+  .dot .active-dot {
+    @apply bg-primary-200;
+  }
 
-.dot .active-dot {
-  @apply bg-primary-200;
-}
-
-/* ================= BLUR ================= */
-
-.blur-left {
-  @apply absolute left-0 top-0 z-20
+  /* -------------------- BLUR -------------------- */
+  .blur-left {
+    @apply absolute left-0 top-0 z-20
          h-full w-40
          bg-gradient-to-r
          from-black via-black/80 to-transparent
          backdrop-blur-sm;
-}
+  }
 
-.blur-right {
-  @apply absolute right-0 top-0 z-20
+  .blur-right {
+    @apply absolute right-0 top-0 z-20
          h-full w-40
          bg-gradient-to-l
          from-black via-black/80 to-transparent
          backdrop-blur-sm;
-}
+  }
   /* =============== Need Help =============== */
-  .bawah {
+  .need-cont {
+    @apply grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-[70px] lg:mt-10;
+  }
+  .text-cont {
+    @apply flex flex-col;
+  }
+  /* Judul */
+  .title.help1 {
+    @apply justify-start text-left;
+  }
+
+  .subtitle.help2 {
+    @apply justify-end text-right pt-0;
+  }
+
+  .atas {
     @apply flex flex-col;
   }
 
@@ -542,26 +588,26 @@
   }
 
   .ask h3 {
-    @apply text-white text-2xl font-semibold tracking-[0.02em] transition-all duration-300;
+    @apply text-black text-2xl font-semibold tracking-[0.02em] transition-all duration-300;
   }
 
   .ask p {
-    @apply text-neutral-500 text-4xl font-light leading-none;
+    @apply text-[#0a0d12] text-4xl font-light leading-none;
   }
 
   /* answer */
   .ask-cont > p {
-    @apply text-neutral-400 text-lg leading-9 mt-6 max-w-[750px];
+    @apply text-neutral-400 text-lg leading-8 mt-6 w-full;
   }
 
   /* -------------------- CTA BOX -------------------- */
 
   .kotak {
-    @apply bg-[#d45532] rounded-[32px] p-7 relative overflow-hidden flex flex-col h-fit;
+    @apply bg-[#d45532] rounded-[32px] p-7 relative overflow-hidden flex flex-col w-full;
   }
 
   .kotak h2 {
-    @apply text-white text-5xl font-semibold leading-tight max-w-[220px];
+    @apply text-white text-4xl font-semibold leading-tight tracking-wide mt-8 pr-10;
   }
 
   .kotak p {
@@ -569,6 +615,195 @@
   }
 
   .kotak img {
-    @apply w-full rounded-2xl mt-8 object-cover;
+    @apply w-full rounded-2xl mt-5 object-cover lg:mb-5;
+  }
+  .hitam {
+    @apply text-white bg-black lg:mb-3 w-full;
+  }
+  .hitam:hover {
+    @apply bg-gray-800;
+  }
+  /* =============== Ready to Start? =============== */
+  .contact-form {
+    @apply flex flex-col gap-8 w-full
+         max-w-[700px] mx-auto lg:mt-20;
+  }
+  .contact-form .tombol {
+    @apply lg:mt-7;
+  }
+
+  /* --------------------- FIELD --------------------- */
+
+  .field {
+    @apply flex flex-col gap-3;
+  }
+
+  .field label {
+    @apply text-lg font-semibold text-neutral-950;
+  }
+
+  /* --------------------- INPUT --------------------- */
+
+  .field input,
+  .field textarea {
+    @apply w-full
+           rounded-2xl
+           border
+           border-neutral-300
+           bg-white
+           px-5
+           py-4
+           text-lg
+           text-neutral-950
+           outline-none
+           transition duration-300;
+  }
+
+  .field input::placeholder,
+  .field textarea::placeholder {
+    @apply text-neutral-400;
+  }
+
+  .field input:focus,
+  .field textarea:focus {
+    @apply border-primary-200
+           ring-2
+           ring-primary-100;
+  }
+
+  /* --------------------- TEXTAREA --------------------- */
+
+  .field textarea {
+    @apply min-h-[220px]
+           resize-none;
+  }
+
+  /* --------------------- SERVICES --------------------- */
+
+  .services {
+    @apply grid grid-cols-1 md:grid-cols-2 gap-y-6 gap-x-10 mt-2;
+  }
+
+  .service-item {
+    @apply flex items-center gap-4 cursor-pointer;
+  }
+
+  /* --------------------- CHECKBOX --------------------- */
+
+  .service-item input[type="checkbox"] {
+    @apply w-6 h-6
+           rounded-md
+           border border-neutral-400
+           accent-primary-200
+           cursor-pointer;
+  }
+
+  .service-item span {
+    @apply text-lg text-neutral-800 font-medium;
+  }
+
+  /* ================= FOOTER ================= */
+
+  .footer-box {
+    @apply bg-neutral-100
+           rounded-[32px]
+           px-10
+           py-12
+           lg:px-14
+           lg:py-14;
+  }
+
+  /* ------------------- TOP ------------------- */
+
+  .footer-top {
+    @apply flex flex-col
+           md:flex-row
+           justify-between
+           items-start
+           gap-10;
+  }
+
+  /* ------------------- TITLE ------------------- */
+
+  .footer-left h2 {
+    @apply text-4xl
+           lg:text-6xl
+           font-bold
+           text-neutral-950
+           leading-tight
+           tracking-[-0.03em];
+  }
+
+  /* ------------------- LOGO ------------------- */
+
+  .footer-logo {
+    @apply flex items-center gap-3;
+  }
+
+  .footer-logo img {
+    @apply w-10 h-10 object-contain;
+  }
+
+  .footer-logo p {
+    @apply text-3xl font-semibold text-neutral-950;
+  }
+
+  /* ------------------- LINE ------------------- */
+
+  .footer-line {
+    @apply w-full
+           h-[1px]
+           bg-neutral-300
+           my-14;
+  }
+
+  /* ------------------- BOTTOM ------------------- */
+
+  .footer-bottom {
+    @apply flex flex-col
+           md:flex-row
+           items-start
+           md:items-center
+           justify-between
+           gap-10;
+  }
+
+  /* --------------------- MENU --------------------- */
+
+  .footer-menu {
+    @apply flex flex-wrap gap-8;
+  }
+
+  .footer-menu a {
+    @apply text-lg
+           text-neutral-800
+           transition duration-300;
+  }
+
+  .footer-menu a:hover {
+    @apply text-primary-200;
+  }
+
+  /* --------------------- SOCIAL --------------------- */
+
+  .footer-social {
+    @apply flex items-center gap-4;
+  }
+
+  .social-icon {
+    @apply w-14 h-14
+           rounded-full
+           border border-neutral-300
+           flex items-center justify-center
+           transition duration-300;
+  }
+
+  .social-icon:hover {
+    @apply border-primary-200
+           -translate-y-1;
+  }
+
+  .social-icon img {
+    @apply w-6 h-6 object-contain;
   }
 }

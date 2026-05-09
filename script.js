@@ -1,14 +1,22 @@
-const nav = document.querySelector(".nav-header");
-const menu = document.querySelector(".menu");
-const menuBtn = document.getElementById("menu-btn");
-const closeBtn = document.getElementById("close-btn");
+const toggleBtn = document.getElementById("theme-toggle");
 
-menuBtn.addEventListener("click", () => {
-    menu.classList.add(".active");
-    nav.classList.add(".menu-open");
+toggleBtn.addEventListener("click", () => {
+  document.documentElement.classList.toggle("dark");
 });
 
-closeBtn.addEventListener("click",() => {
-    menu.classList.remove(".active");
-    nav.classList.remove(".menu-open");
-})
+// Menu
+const body = document.body;
+
+const menuBtn = document.getElementById("menu-btn");
+const closeBtn = document.getElementById("close-btn");
+const mobileMenu = document.getElementById("mobile-menu");
+
+menuBtn.addEventListener("click", () => {
+  body.classList.add("menu-open");
+  mobileMenu.classList.add("active");
+});
+
+closeBtn.addEventListener("click", () => {
+  body.classList.remove("menu-open");
+  mobileMenu.classList.remove("active");
+});
